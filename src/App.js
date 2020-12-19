@@ -1,4 +1,4 @@
-import React,{useState} from 'react';
+import React,{useEffect, useState} from 'react';
 import {fetchWeather} from "./api/fetchWeather";
 import LoaderComp from './Loader';
 import {ToastContainer, toast } from 'react-toastify';
@@ -10,6 +10,7 @@ const App=()=>{
     const [query,setQuery]=useState('');
     const [load,setLoad]=useState(false);
     const [weather,setWeather]=useState({});
+    const [getDate, setGetDate] = useState("");
 
     const search=async(e)=>{
         setLoad(true);
@@ -27,8 +28,21 @@ const App=()=>{
         await setWeather({})
     }
     const notify = () => toast.error("City Not Found");
+    // useEffect(()=>{
+    //     const currentDate = new Date().toLocaleTimeString();
+    //     setGetDate(currentDate);
+    //     // console.log("date: ", currentDate);
+    // },[]);
+    useEffect(()=>{
+        setTimeout(() => {
+            const currentDate = new Date().toLocaleTimeString();
+        setGetDate(currentDate);
+        // console.log("date: ", getDate);
+        }, 1000);
+    },[getDate])
     return(
         <div className="main-container">
+                <h1 className="date-heading">{getDate}</h1>
             <div className="search">
             <input
                 type="text"

@@ -91,7 +91,13 @@ p {
   width: 100px;
   height: 100px;
 }
-
+.date-heading {
+  position: absolute;
+  top: 0px;
+  font-family: "Courier New", Courier, monospace;
+  color: rgba(250, 250, 250, 0.75);
+  font-size: 22px;
+}
 .info {
   display: flex;
   flex-direction: column;
